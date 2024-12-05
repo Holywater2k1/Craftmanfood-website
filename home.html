@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craftman Food - Enjoy the Taste</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href = "index.html">
+                    <img src="logo.png" alt="Craftman Food Logo" style="width:150px;height70px;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="delivery-billing.html">Delivery and Billing</a></li>
+                <li><a href="order-history.html">Histories</a></li>
+            </ul>
+            <button id="signup-btn" class="cta-button">Sign Up</button>
+        </nav>
+    </header>
+
+    <!-- Modal Structure for Sign Up Form -->
+<div id="signup-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Sign Up for Exclusive Offers</h2>
+    <p>Stay updated with the latest specials, seasonal dishes, and exclusive offers by signing up for our newsletter.</p>
+
+    <!-- Form Element -->
+    <form id="signup-form" action="/submit" method="POST">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="checkbox" id="subscribe" name="subscribe">
+        <label for="subscribe">I agree to receive promotional emails</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="cta-button">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enjoy the delicious taste of our food</h1>
+            <p>Welcome to our local restaurant, where every meal is crafted with care and passion. Experience fast service and mouthwatering dishes that will keep you coming back for more!</p>
+            <form action="#" class="email-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Login</button>
+            </form>
+            <small>By clicking Login, you're confirming that you agree with our <a href="#">Terms & Conditions</a>.</small>
+        </div>
+    </section>
+
+    <!-- Second Section: Experience Culinary Excellence -->
+<section class="experience-section">
+    <div class="container">
+        <div class="experience-text">
+            <h2>Experience Culinary Excellence Like Never Before</h2>
+            <p>Welcome to our restaurant, where every dish tells a story. With a rich history rooted in tradition and innovation, we pride ourselves on delivering a unique dining experience.</p>
+            <div class="experience-info">
+                <div class="info-block">
+                    <h3>Our Story</h3>
+                    <p>Passionate chefs crafting delightful dishes from locally sourced ingredients.</p>
+                </div>
+                <div class="info-block">
+                    <h3>What Makes Us Unique</h3>
+                    <p>A blend of flavors and cultures that tantalize your taste buds.</p>
+                </div>
+            </div>
+        </div>
+        <div class="experience-image">
+            <img src="food.jpg" alt="Experience Food Image">
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Delicious Dining Options -->
+<section class="dining-options">
+    <div class="container1">
+        <h2>Delicious Dining Options for Everyone</h2>
+        <p>We offer a variety of dining experiences to suit your needs. Whether you're looking to dine in, grab takeout, or enjoy delivery, we’ve got you covered.</p>
+        
+        <div class="options">
+            <!-- Dine-In Option -->
+            <div class="option">
+                <img src="Dine_in.jpg" alt="Dine-In Burger Image">
+                <h3>Dine-In: Experience Our Cozy Atmosphere</h3>
+                <p>Join us for a delightful meal in a warm, inviting setting.</p>
+            </div>
+
+            <!-- Takeout Option -->
+            <div class="option">
+                <img src="takeout.jpg" alt="Takeout Food Image">
+                <h3>Takeout: Enjoy Your Favorites Anywhere</h3>
+                <p>Order your favorite dishes and take them on the go.</p>
+            </div>
+
+            <!-- Delivery Option -->
+            <div class="option">
+                <img src="deli.jpg" alt="Delivery Service Image">
+                <h3>Delivery: Fresh Food at Your Doorstep</h3>
+                <p>Let us bring the restaurant experience to you with our fast delivery service.</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- Section 4: Culinary-Experience -->
+<section id="culinary-experience" class="section">
+    <div class="container2">
+      <h3 class="section-heading">Fresh</h3>
+      <h1>Discover Our Unique Culinary Experience</h1>
+      <p>
+        Indulge in dishes crafted from locally sourced ingredients. Our menu changes with the seasons
+        to ensure freshness and flavor.
+      </p>
+  
+      <div class="features">
+        <div class="feature-box">
+          <i class="icon">🔍</i>
+          <h3>Locally Sourced Ingredients</h3>
+          <p>
+            We prioritize fresh, local produce to create unforgettable meals that celebrate our community.
+          </p>
+        </div>
+        <div class="feature-box">
+          <i class="icon">📅</i>
+          <h3>Seasonal Menus Available</h3>
+          <p>
+            Our menu evolves with the seasons, offering new flavors and dishes throughout the year.
+          </p>
+        </div>
+        <div class="center-logo">
+          <img src="logo.png" alt="Craftman Food Logo">
+        </div>
+        <div class="feature-box">
+          <i class="icon">👨‍🍳</i>
+          <h3>Chef Specials Daily</h3>
+          <p>
+            Experience our chef's unique creations that highlight the best of seasonal ingredients.
+          </p>
+        </div>
+        <div class="feature-box">
+          <i class="icon">🏠</i>
+          <h3>Join Us Today</h3>
+          <p>
+            Visit us to explore our delicious offerings and enjoy a meal crafted with care.
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <section id="best-dining" class="section">
+    <div class="container3">
+      <h3 class="section-heading">Delicious</h3>
+      <h1>Experience the Best Dining in Town</h1>
+      <p>
+        At our restaurant, we pride ourselves on serving high-quality food that delights every palate. Enjoy quick delivery right to your doorstep, ensuring your meal is fresh and hot.
+      </p>
+      
+      <div class="features">
+        <div class="feature-box">
+          <i class="icon">🍽️</i>
+          <h3>Quality Food</h3>
+          <p>
+            Savor dishes made from the finest ingredients, crafted with love and care.
+          </p>
+        </div>
+        <div class="feature-box">
+          <i class="icon">🚚</i>
+          <h3>Fast Delivery</h3>
+          <p>
+            Get your favorite meals delivered swiftly, so you can enjoy them without delay.
+          </p>
+        </div>
+        <div class="feature-img">
+          <img src="food.jpg" alt="Best Dining Experience">
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="delicious-meals" class="section">
+  <div class="container4">
+    <h1>Delicious Meals Await You!</h1>
+    <p>Explore our menu and order your favorites today!</p>
+
+    <div class="cta-buttons">
+      <a href="menu.html" class="cta-button">Menu</a>
+    </div>
+
+    <div class="testimonial">
+      <img src="food.jpg" alt="Critic Image" class="testimonial-img">
+      <blockquote>
+        <p>"The food was absolutely delicious and the service was outstanding! I can't wait to order again!"</p>
+        <cite>— Gordon Ramsay, QC</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="our-team" class="section">
+  <div class="container5">
+    <h2>Culinary</h2>
+    <h1>Our Team</h1>
+    <p>Meet the talented individuals behind our delicious dishes.</p>
+
+    <div class="team-wrapper">
+      <div class="team-member">
+        <img src="chef1.jpg" alt="Chef A">
+        <h3>Chef A</h3>
+        <p>Head Chef</p>
+        <p>Passionate about creating unforgettable culinary experiences with fresh, local ingredients.</p>
+        <div class="social-icons">
+          <a href="#">🐦</a>
+          <a href="#">📘</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="chef2.jpg" alt="Chef B">
+        <h3>Chef B</h3>
+        <p>Sous Chef</p>
+        <p>Expert in flavor combinations, dedicated to elevating every dish to perfection.</p>
+        <div class="social-icons">
+          <a href="#">🐦</a>
+          <a href="#">📘</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="chef3.jpg" alt="Chef C">
+        <h3>Chef C</h3>
+        <p>Pastry Chef</p>
+        <p>Creating delightful desserts that are as beautiful as they are delicious.</p>
+        <div class="social-icons">
+          <a href="#">🐦</a>
+          <a href="#">📘</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="open-positions">
+      <h2>Open Positions</h2>
+      <p>Explore exciting career opportunities with us today!</p>
+      <a href="#" class="cta-button">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!--Contact Section-->
+<section class="contact-section">
+  <div class="contact-header">
+    <h1>Welcome</h1>
+    <h2>Get in Touch</h2>
+    <p>We’re here to assist you with any inquiries or feedback you may have.</p>
+  </div>
+
+  <div class="contact-info">
+    <div class="info-item">
+      <i class="fas fa-envelope"></i>
+      <h3>Email</h3>
+      <a href="mailto:info@c.com">info@c.com</a>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-phone"></i>
+      <h3>Phone</h3>
+      <a href="tel:+66XXXXXXX">+66XXXXXXXX</a>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Address</h3>
+      <p>xxxxxx</p>
+    </div>
+  </div>
+
+  <div class="map">
+    <img src="your-map-placeholder.jpg" alt="Map Placeholder">
+  </div>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <p><strong>Address:</strong><br> Level 1, 12 Sample St, Sydney NSW 2000</p>
+      <p><strong>Contact:</strong><br> <a href="tel:18001234567">1800 123 4567</a><br> <a href="mailto:info@realme.io">info@realme.io</a></p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    
+    <div class="legal">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+  </footer>
+</section>
+
+
+<script>
+  // Get the modal
+var modal = document.getElementById("signup-modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("signup-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close-btn")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery & Billing - Craftman Food</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+       <!-- Navigation Bar -->
+       <header>
+        <nav>
+            <div class="logo">
+                <a href = "index.html">
+                    <img src="logo.png" alt="Craftman Food Logo" style="width:150px;height70px;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="delivery-billing.html">Delivery and Billing</a></li>
+                <li><a href="order-history.html">Histories</a></li>
+            </ul>
+            <button id="signup-btn" class="cta-button">Sign Up</button>
+        </nav>
+    </header>
+
+    <!-- Modal Structure for Sign Up Form -->
+<div id="signup-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>Sign Up for Exclusive Offers</h2>
+    <p>Stay updated with the latest specials, seasonal dishes, and exclusive offers by signing up for our newsletter.</p>
+
+    <!-- Form Element -->
+    <form id="signup-form" action="/submit" method="POST">
+      <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="checkbox" id="subscribe" name="subscribe">
+        <label for="subscribe">I agree to receive promotional emails</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="cta-button">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+    <h2>Delivery & Billing</h2>
+    <div class="billing-form">
+        <h3>Delivery Address</h3>
+        <form id="deliveryForm">
+            <label>Name:</label>
+            <input type="text" required>
+            <label>Phone Number:</label>
+            <input type="tel" required>
+            <label>Street Address:</label>
+            <input type="text" required>
+            <label>Apartment, Suite:</label>
+            <input type="text">
+            <label>Town/City:</label>
+            <input type="text" required>
+        </form>
+    </div>
+
+    <div class="dining-options">
+        <h3>Select Dining Option</h3>
+        <div class="option-buttons">
+            <button class="option-button" onclick="selectDiningOption('dine-in')">Dine-in</button>
+            <button class="option-button" onclick="selectDiningOption('take-away')">Take-away</button>
+            <button class="option-button" onclick="selectDiningOption('delivery')">Delivery</button>
+        </div>
+    </div>
+
+    <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div id="orderDetails"></div>
+        <p>Subtotal: ฿<span id="subtotal">0</span></p>
+        <p>Delivery Fee: ฿20</p>
+        <p>Total: ฿<span id="total">0</span></p>
+    </div>
+
+    <div class="payment-methods">
+        <h3>Payment Methods</h3>
+        <form id="paymentForm">
+            <label><input type="radio" name="payment" value="card" required> Credit or Debit Card</label>
+            <div id="cardDetails" style="display:none;">
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="MM/YY">
+                <input type="text" placeholder="CVC">
+            </div>
+            <label><input type="radio" name="payment" value="qr"> QR Scan</label>
+            <label><input type="radio" name="payment" value="cod"> Cash on Delivery</label>
+            <button type="button" "onclick="placeOrder()">Place Order</button>
+            <button type="button" class="cancel-button" onclick="cancelOrder()">Cancel Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("subtotal").innerText = localStorage.getItem("subtotal");
+        const deliveryFee = 20;
+        document.getElementById("total").innerText = parseInt(localStorage.getItem("subtotal")|| 0) + deliveryFee;
+
+        document.querySelectorAll('[name="payment"]').forEach((radio) => {
+            radio.addEventListener('change', (event) => {
+                document.getElementById("cardDetails").style.display =
+                    event.target.value === "card" ? "flex" : "none";
+                document.getElementById("qrCodeBox").style.display =
+                    event.target.value === "qr" ? "block" : "none";
+            });
+        });
+
+        function placeOrder() {
+            // Store order in localStorage for Order History
+            const order = {
+                details: document.getElementById("orderDetails").innerText,
+                subtotal: document.getElementById("subtotal").innerText,
+                deliveryFee: deliveryFee,
+                total: document.getElementById("total").innerText,
+                status: "Delivering"
+            };
+
+            let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+            orderHistory.push(order);
+            localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+            alert("Order placed successfully!");
+            window.location.href = "order-history.html";
+        }
+
+        function cancelOrder() {
+        if (confirm("Are you sure you want to cancel this order?")) {
+            // Reset subtotal and total in the DOM
+            document.getElementById("subtotal").innerText = "0";
+            document.getElementById("total").innerText = "0";
+
+            // Clear subtotal in localStorage
+            localStorage.removeItem("subtotal");
+            alert("Order canceled.");
+            // Optional: Add additional actions for canceling, like resetting forms or redirecting.
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Craftman Food</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href = "index.html">
+                        <img src="logo.png" alt="Craftman Food Logo" style="width:150px;height70px;">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="menu.html">Our Menu</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="delivery-billing.html">Delivery and Billing</a></li>
+                    <li><a href="order-history.html">Histories</a></li>
+                </ul>
+                <button id="signup-btn" class="cta-button">Sign Up</button>
+            </nav>
+        </header>
+    
+        <!-- Modal Structure for Sign Up Form -->
+    <div id="signup-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Sign Up for Exclusive Offers</h2>
+        <p>Stay updated with the latest specials, seasonal dishes, and exclusive offers by signing up for our newsletter.</p>
+    
+        <!-- Form Element -->
+        <form id="signup-form" action="/submit" method="POST">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="checkbox" id="subscribe" name="subscribe">
+            <label for="subscribe">I agree to receive promotional emails</label>
+          </div>
+    
+          <!-- Submit Button -->
+          <button type="submit" class="cta-button">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically inserted here by JavaScript -->
+        </div>
+        <div class="cart-subtotal">
+            <span>Subtotal:</span>
+            <span>฿<span id="subtotal">0</span></span>
+        </div>
+        <button class="proceed-button" onclick="goToDeliveryBilling()">Proceed to Delivery & Billing</button>
+    </div>
+    
+
+    <script>
+        const cartItemsContainer = document.getElementById("cartItems");
+        const subtotalElement = document.getElementById("subtotal");
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            updateCart(cart);
+        });
+    
+        function updateCart(cart) {
+            cartItemsContainer.innerHTML = "";
+            let subtotal = 0;
+    
+            cart.forEach(item => {
+                const cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.innerHTML = `
+                    
+                    <h3>${item.name}</h3>
+                    <p>฿${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <button onclick="removeFromCart(${item.id})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+                subtotal += item.price * item.quantity;
+            });
+    
+            subtotalElement.innerText = subtotal;
+        }
+    
+        function removeFromCart(itemId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== itemId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart(cart);
+        }
+    
+        function goToDeliveryBilling() {
+            localStorage.setItem("subtotal", subtotalElement.innerText);
+            window.location.href = "delivery-billing.html";
+        }
+    </script>
+    
+</body>
+</html>

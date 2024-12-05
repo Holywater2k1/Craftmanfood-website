@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Craftman Food</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href = "index.html">
+                        <img src="logo.png" alt="Craftman Food Logo" style="width:150px;height70px;">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="menu.html">Our Menu</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="delivery-billing.html">Delivery and Billing</a></li>
+                    <li><a href="order-history.html">Histories</a></li>
+                </ul>
+                <button id="signup-btn" class="cta-button">Sign Up</button>
+            </nav>
+        </header>
+    
+        <!-- Modal Structure for Sign Up Form -->
+    <div id="signup-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Sign Up for Exclusive Offers</h2>
+        <p>Stay updated with the latest specials, seasonal dishes, and exclusive offers by signing up for our newsletter.</p>
+    
+        <!-- Form Element -->
+        <form id="signup-form" action="/submit" method="POST">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="checkbox" id="subscribe" name="subscribe">
+            <label for="subscribe">I agree to receive promotional emails</label>
+          </div>
+    
+          <!-- Submit Button -->
+          <button type="submit" class="cta-button">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <h2 style = "text-align: center;">Our Tasty Foods</h2>
+    <div class="menu-items" id="menuItems">
+        <!-- Menu items will be inserted here by JavaScript -->
+    </div>
+
+    <script>
+        const menuItemsContainer = document.getElementById("menuItems");
+    
+        const menu = [
+            { id: 1, name: "Green Curry", price: 80, img: "Greencurry.jpg" },
+            { id: 2, name: "Pad Thai", price: 60, img: "padthai.jpg" },
+            { id: 3, name: "Tea-leaf Salad", price: 60, img: "tealeafsalad.jpg" },
+            { id: 4, name: "Tofu Noodle", price: 75, img: "tofunoodle.jpg" },
+            { id: 5, name: "Stirfried Chicken with Rice", price: 60, img: "stirfriedchick.jpg" },
+            { id: 6, name: "Coco-milk Noodle", price: 75, img: "cocomilknoodle.jpg" },
+            { id: 7, name: "Tomyum soup", price: 50, img: "Tomyumsoup.jpg" },
+            { id: 8, name: "Fried Rice with Beans", price: 50, img: "beanfriedrice.jpg" },
+            { id: 9, name: "Jasmine Rice", price: 50, img: "rice.jpg" },
+        ];
+    
+        menu.forEach(item => {
+            const menuItem = document.createElement("div");
+            menuItem.classList.add("menu-item");
+            menuItem.innerHTML = `
+                <img src="${item.img}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p>฿${item.price}</p>
+                <button onclick="addToCart(${item.id})">Add to Cart</button>
+            `;
+            menuItemsContainer.appendChild(menuItem);
+        });
+    
+        // Add to Cart Function
+        function addToCart(itemId) {
+            const item = menu.find(menuItem => menuItem.id === itemId);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Check if item already exists in the cart
+            const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    
+            if (existingItem) {
+                existingItem.quantity += 1;  // Increment quantity if item already in cart
+            } else {
+                cart.push({ id: item.id, name: item.name, price: item.price, quantity: 1 });
+            }
+    
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(item.name + " added to cart!");
+        }
+    </script>
+    
+
+    <!-- Footer -->
+    <footer style = "text-align: center;">
+        <p>&copy; 2024 Craftman Food. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
